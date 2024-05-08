@@ -1,4 +1,7 @@
 // File for Util functions
+import logo from "../images/logo.png";
+import { axiosInstance } from "../api/axiosInstance";
+import { history } from "./history";
 
 export const calculateTotalItems = (items = []) => {
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
@@ -32,3 +35,53 @@ export const checkForFavourite = (state, item) => {
   }
   return status;
 };
+
+
+export const loadScript = (src) => {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.onload = () => {
+      resolve(true);
+    };
+    script.onerror = () => {
+      resolve(false);
+    };
+   document.body.appendChild(script);
+ });
+};
+
+export const displayRazorPay = (orderDetails) => {
+  const options = {
+    key: process.env.REACT_APP_RAZORPAY_KEY_ID,
+    currency: orderDetails.currency,
+    amount: orderDetails.amount,
+    name: process.env.REACT_APP_PROJECT_NAME,
+    description: "Test order",
+    image: {logo},
+    order_id: orderDetails.id,
+    "handler": async function (response) {
+      try {
+        const { data } = await axiosInstance.post('/api/validatepayment', response, {
+          headers: {
+            "Content-Type": "application/json",
+          }
+        });
+        history.navigate(`${data.redirectUrl}`)
+      }
+      catch (error) {
+        console.log(error)
+      }
+      },
+    prefill: {
+      name: "test user",
+      email: "testuser@email.com",
+      contact: "+919000090000",
+    },
+  };
+
+  const paymentObject = new window.Razorpay(options);
+  paymentObject.open();
+}
+
+

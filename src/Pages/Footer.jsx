@@ -2,9 +2,9 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import React from 'react';
-import { FooterDiv } from '../styledComponents/footer.styled';
+import { Footer as FooterStyled } from '../styledComponents/footer.styled';
 const Footer = () => (
-  <FooterDiv>
+  <FooterStyled>
     <a
       href='https://github.com/KshitijRaj09'
       target='_blank'
@@ -35,6 +35,6 @@ const Footer = () => (
         sx={{ color: '#F3E9DD', cursor: 'pointer' }}
       />
     </a>
-  </FooterDiv>
+  </FooterStyled>
 );
 export default Footer;

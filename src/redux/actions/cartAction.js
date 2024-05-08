@@ -100,3 +100,16 @@ export const deleteCartItem =
       dispatch(showError(response.data, response.status));
     }
   };
+
+// delete all cart
+export const deleteCart =
+(userId) => async (dispatch, getState) => {
+  try {
+    const {data} = await axiosInstance.delete(
+      `/api/deleteCart/${userId}`
+    );
+    dispatch({type: cartAction.CLEAR_CART, payload: data});
+  } catch ({response}) {
+    dispatch(showError(response.data, response.status));
+  }
+};

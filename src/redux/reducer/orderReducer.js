@@ -2,6 +2,7 @@ import * as orderActions from "../actionTypes";
 
 const initialState = {
     orders: [],
+    order: {},
     loading: false
 }
 
@@ -16,7 +17,7 @@ const orderReducer = (state = initialState, action) => {
         case orderActions.CHECKOUT:
             return {
                 ...state,
-                orders: [...state.orders, action.payload]
+                order: action.payload
             }
         case orderActions.ORDERS_LOADING: {
             return {

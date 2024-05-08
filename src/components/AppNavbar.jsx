@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   Container,
   Avatar,
@@ -78,8 +78,6 @@ const AppNavbar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const { cartCount } = useSelector((state) => state.cartReducer);
-
-  const dispatch = useDispatch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
