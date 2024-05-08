@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# MERN Ecommerce frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application is a part of MERN Ecommerce project. It is the frontend application built using style components, reactjs with redux for central state management and for routing react-router-dom has been used.
+
+### You can find link of backend repository here : [Backend](https://github.com/KshitijRaj09/mern_ecommerce)
 
 ## Available Scripts
 
